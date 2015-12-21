@@ -2,11 +2,11 @@ var webpack = require('webpack');
 
 module.exports = {
   entry: [
-    './src/react-cityPicker.js' // Your appʼs entry point
+    './example/app.js' // Your appʼs entry point
   ],
   output: {
-    path: __dirname + '/dist/',
-    filename: 'react-cityPicker.js',
+    path: __dirname + "/example/",
+    filename: 'bundle.js',
     publicPath: '/js/'
   },
   module: {

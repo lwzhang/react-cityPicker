@@ -1,8 +1,8 @@
 {
   "name": "react-citypicker",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "City Picker Component for React",
+  "main": "lib/cityPicker.js",
   "dependencies": {
     "babel": "^6.3.13",
     "babel-core": "^6.3.15",

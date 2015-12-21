@@ -3,8 +3,8 @@
  */
 import React from "react";
 class CityList extends React.Component {
-    handleClick (city, pro) {
-        this.props.handleCityClick(city, pro);
+    handleClick (city) {
+        this.props.handleCityClick(city);
     }
 
     shouldComponentUpdate (nextProps, nextState) {
@@ -12,13 +12,14 @@ class CityList extends React.Component {
     }
 
     render () {
+        let {city, pro, cityShow} = this.props;
         let cityRows = [];
-        this.props.city && this.props.city.forEach((city, i) => {
-            cityRows.push(<li onClick={this.handleClick.bind(this, city, this.props.pro)} key={i}>{city}</li>);
+        city && city.forEach((city, i) => {
+            cityRows.push(<li onClick={this.handleClick.bind(this, city)} key={i}>{city}</li>);
         });
 
         let style = {
-            display: this.props.cityShow ? "block" : "none"
+            display: cityShow ? "block" : "none"
         };
 
         return (

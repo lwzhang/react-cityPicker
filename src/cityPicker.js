@@ -1,12 +1,12 @@
 /**
  * Created by cqq on 2015/12/16.
  */
-import "../css/style.css";
-
 import React from "react";
 
 import cities from "./cities";
 import ProvinceList from "./provinceList";
+import NavBar from "./navBar";
+import LetterPrompt from "./letterPrompt";
 import CityList from "./cityList";
 
 class CityPicker extends React.Component {
@@ -28,20 +28,32 @@ class CityPicker extends React.Component {
         this.setState({createCity: true, cityShow: true, city: city, pro: pro});
     }
 
-    handleCityClick (city, pro) {
+    handleCityClick (city) {
         this.setState({proShow: false, cityShow: false});
-        this.refs.cityInput.value = pro + "" + city;
+        this.refs.cityInput.value = this.state.pro + "" + city;
+    }
+
+    letterChange (letter) {
+        this.setState({letter: letter});
     }
 
     render () {
-        let provinceList = null, cityList = null;
-        let {createPro, createCity, proShow, cityShow, city, pro} = this.state;
+        let provinceList = null, cityList = null, navBar = null, letterPrompt = null;
+        let {createPro, createCity, proShow, cityShow, city, pro, letter} = this.state;
 
         if (createPro) {
             provinceList = <ProvinceList
                 cities={cities}
                 proShow={proShow}
                 handleProClick={this.handleProClick.bind(this)} />;
+
+            navBar = <NavBar
+                proShow={proShow}
+                letterChange={this.letterChange.bind(this)} />;
+        }
+
+        if (letter) {
+            letterPrompt = <LetterPrompt letter={letter} />
         }
 
         if (createCity) {
@@ -57,13 +69,12 @@ class CityPicker extends React.Component {
                 <input type="text" ref="cityInput" onFocus={this.handleChange.bind(this)} />
 
                 {provinceList}
+                {navBar}
+                {letterPrompt}
                 {cityList}
             </div>
         )
     }
 }
 
-ReactDOM.render(
-    <CityPicker />,
-    document.querySelector("#picker-box")
-);
+export default CityPicker;
