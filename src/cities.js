@@ -1,5 +1,5 @@
 /**
- * Created by cqq on 2015/12/16.
+ * Created by zlw on 2015/12/16.
  */
 const cities = {
     "A": {
